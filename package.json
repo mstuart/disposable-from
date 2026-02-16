@@ -1,6 +1,6 @@
 {
 	"name": "disposable-from",
-	"version": "0.0.0-development",
+	"version": "1.0.0",
 	"description": "Create Disposable wrappers for timers, event listeners, intervals, and custom cleanup",
 	"license": "MIT",
 	"repository": "mstuart/disposable-from",
