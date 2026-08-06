@@ -6,7 +6,7 @@ export type Disposable = {
 Create a disposable setTimeout wrapper.
 
 @param callback - The function to call after the delay.
-@param milliseconds - The delay in milliseconds.
+@param milliseconds - How long to wait before invoking, in milliseconds.
 @returns A disposable that clears the timeout on dispose.
 
 @example
@@ -23,7 +23,7 @@ export function disposableTimer(callback: () => void, milliseconds: number): Dis
 Create a disposable setInterval wrapper.
 
 @param callback - The function to call on each interval.
-@param milliseconds - The interval in milliseconds.
+@param milliseconds - How long to wait between invocations, in milliseconds.
 @returns A disposable that clears the interval on dispose.
 
 @example
