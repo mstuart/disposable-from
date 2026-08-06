@@ -1,7 +1,16 @@
-# disposable-from
+<div align="center">
+  <img src="docs/assets/logo.svg" alt="disposable-from — Create Disposable wrappers for timers, event listeners, intervals, and custom cleanup" width="720">
+</div>
 
-> Create Disposable wrappers for timers, event listeners, intervals, and custom cleanup
+<p align="center"><strong>Create Disposable wrappers for timers, event listeners, intervals, and custom cleanup</strong></p>
 
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://www.npmjs.com/package/disposable-from"><img src="https://img.shields.io/npm/v/disposable-from?label=npm" alt="npm"></a>
+  <img src="https://img.shields.io/badge/node-%E2%89%A520-339933.svg" alt="Node 20+">
+</p>
+
+---
 ## Install
 
 ```sh
