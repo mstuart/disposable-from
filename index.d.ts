@@ -1,6 +1,6 @@
-export type Disposable = {
-	[Symbol.dispose](): void;
-};
+export interface Disposable {
+  [Symbol.dispose]: () => void;
+}
 
 /**
 Create a disposable setTimeout wrapper.
@@ -17,7 +17,10 @@ const timer = disposableTimer(() => console.log('fired'), 1000);
 timer[Symbol.dispose](); // Clears the timeout
 ```
 */
-export function disposableTimer(callback: () => void, milliseconds: number): Disposable;
+export function disposableTimer(
+  callback: () => void,
+  milliseconds: number
+): Disposable;
 
 /**
 Create a disposable setInterval wrapper.
@@ -34,7 +37,10 @@ const interval = disposableInterval(() => console.log('tick'), 500);
 interval[Symbol.dispose](); // Clears the interval
 ```
 */
-export function disposableInterval(callback: () => void, milliseconds: number): Disposable;
+export function disposableInterval(
+  callback: () => void,
+  milliseconds: number
+): Disposable;
 
 /**
 Create a disposable event listener wrapper.
@@ -54,10 +60,10 @@ listener[Symbol.dispose](); // Removes the event listener
 ```
 */
 export function disposableListener(
-	target: EventTarget,
-	event: string,
-	listener: EventListenerOrEventListenerObject,
-	options?: AddEventListenerOptions | boolean,
+  target: EventTarget,
+  event: string,
+  listener: EventListenerOrEventListenerObject,
+  options?: AddEventListenerOptions | boolean
 ): Disposable;
 
 /**
