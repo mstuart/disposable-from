@@ -6,13 +6,13 @@ Create a disposable setTimeout wrapper.
 @returns {Disposable} A disposable that clears the timeout.
 */
 export function disposableTimer(callback, milliseconds) {
-	let id = setTimeout(callback, milliseconds);
-	return {
-		[Symbol.dispose]() {
-			clearTimeout(id);
-			id = undefined;
-		},
-	};
+  let id = setTimeout(callback, milliseconds);
+  return {
+    [Symbol.dispose]() {
+      clearTimeout(id);
+      id = undefined;
+    },
+  };
 }
 
 /**
@@ -23,13 +23,13 @@ Create a disposable setInterval wrapper.
 @returns {Disposable} A disposable that clears the interval.
 */
 export function disposableInterval(callback, milliseconds) {
-	let id = setInterval(callback, milliseconds);
-	return {
-		[Symbol.dispose]() {
-			clearInterval(id);
-			id = undefined;
-		},
-	};
+  let id = setInterval(callback, milliseconds);
+  return {
+    [Symbol.dispose]() {
+      clearInterval(id);
+      id = undefined;
+    },
+  };
 }
 
 /**
@@ -42,18 +42,18 @@ Create a disposable event listener wrapper.
 @returns {Disposable} A disposable that removes the listener.
 */
 export function disposableListener(target, event, listener, options) {
-	target.addEventListener(event, listener, options);
-	let disposed = false;
-	return {
-		[Symbol.dispose]() {
-			if (disposed) {
-				return;
-			}
+  target.addEventListener(event, listener, options);
+  let disposed = false;
+  return {
+    [Symbol.dispose]() {
+      if (disposed) {
+        return;
+      }
 
-			disposed = true;
-			target.removeEventListener(event, listener, options);
-		},
-	};
+      disposed = true;
+      target.removeEventListener(event, listener, options);
+    },
+  };
 }
 
 /**
@@ -63,16 +63,16 @@ Create a disposable from a setup function that returns a teardown function.
 @returns {Disposable} A disposable that runs the teardown.
 */
 export function disposableCallback(setup) {
-	const teardown = setup();
-	let disposed = false;
-	return {
-		[Symbol.dispose]() {
-			if (disposed) {
-				return;
-			}
+  const teardown = setup();
+  let disposed = false;
+  return {
+    [Symbol.dispose]() {
+      if (disposed) {
+        return;
+      }
 
-			disposed = true;
-			teardown();
-		},
-	};
+      disposed = true;
+      teardown();
+    },
+  };
 }
