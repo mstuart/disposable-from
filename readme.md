@@ -8,7 +8,7 @@
   <a href="https://github.com/mstuart/disposable-from/actions/workflows/main.yml"><img src="https://github.com/mstuart/disposable-from/actions/workflows/main.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <a href="https://www.npmjs.com/package/disposable-from"><img src="https://img.shields.io/npm/v/disposable-from?label=npm" alt="npm"></a>
-  <img src="https://img.shields.io/badge/node-%E2%89%A520-339933.svg" alt="Node 20+">
+  <img src="https://img.shields.io/badge/node-%E2%89%A522-339933.svg" alt="Node 22+">
   <a href="https://deepwiki.com/mstuart/disposable-from"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
   <a href="https://socket.dev/npm/package/disposable-from"><img src="https://socket.dev/api/badge/npm/package/disposable-from" alt="Socket"></a>
 </p>
