@@ -44,7 +44,16 @@ Create a disposable event listener wrapper.
 export function disposableListener(target, event, listener, options) {
   const capture =
     typeof options === "boolean" ? options : Boolean(options?.capture);
-  target.addEventListener(event, listener, options);
+  const registrationOptions =
+    typeof options === "boolean"
+      ? capture
+      : Object.freeze({
+          capture,
+          once: options?.once,
+          passive: options?.passive,
+          signal: options?.signal,
+        });
+  target.addEventListener(event, listener, registrationOptions);
   let disposed = false;
   return {
     [Symbol.dispose]() {

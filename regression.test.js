@@ -45,3 +45,34 @@ test("a captured EventTarget listener is removed after its options change", (t) 
   target.dispatchEvent(new Event("event"));
   t.is(calls, 0);
 });
+
+test("other option getters cannot change the registered capture snapshot", (t) => {
+  const listeners = new Map();
+  const target = {
+    addEventListener(_event, listener, options) {
+      const { once } = options;
+      listeners.set(listener, { capture: options.capture, once });
+    },
+    removeEventListener(_event, listener, options) {
+      if (listeners.get(listener)?.capture === options.capture) {
+        listeners.delete(listener);
+      }
+    },
+  };
+  const registrationOptions = {
+    capture: true,
+    get once() {
+      this.capture = false;
+      return false;
+    },
+  };
+  const callback = () => undefined;
+  const disposable = disposableListener(
+    target,
+    "event",
+    callback,
+    registrationOptions
+  );
+  disposable[Symbol.dispose]();
+  t.false(listeners.has(callback));
+});
