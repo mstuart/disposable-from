@@ -42,7 +42,18 @@ Create a disposable event listener wrapper.
 @returns {Disposable} A disposable that removes the listener.
 */
 export function disposableListener(target, event, listener, options) {
-  target.addEventListener(event, listener, options);
+  const capture =
+    typeof options === "boolean" ? options : Boolean(options?.capture);
+  const registrationOptions =
+    typeof options === "boolean"
+      ? capture
+      : Object.freeze({
+          capture,
+          once: options?.once,
+          passive: options?.passive,
+          signal: options?.signal,
+        });
+  target.addEventListener(event, listener, registrationOptions);
   let disposed = false;
   return {
     [Symbol.dispose]() {
@@ -51,7 +62,7 @@ export function disposableListener(target, event, listener, options) {
       }
 
       disposed = true;
-      target.removeEventListener(event, listener, options);
+      target.removeEventListener(event, listener, { capture });
     },
   };
 }
