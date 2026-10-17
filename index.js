@@ -42,6 +42,8 @@ Create a disposable event listener wrapper.
 @returns {Disposable} A disposable that removes the listener.
 */
 export function disposableListener(target, event, listener, options) {
+  const capture =
+    typeof options === "boolean" ? options : Boolean(options?.capture);
   target.addEventListener(event, listener, options);
   let disposed = false;
   return {
@@ -51,7 +53,7 @@ export function disposableListener(target, event, listener, options) {
       }
 
       disposed = true;
-      target.removeEventListener(event, listener, options);
+      target.removeEventListener(event, listener, { capture });
     },
   };
 }
